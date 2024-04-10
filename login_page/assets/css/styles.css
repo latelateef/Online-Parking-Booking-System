@@ -56,6 +56,27 @@ img {
   object-position: center;
 }
 
+.user_admin{
+  display: flex;
+  justify-content: space-around;
+  opacity: 40%;
+  font-size: x-large;
+  margin-top: -6%;
+  margin-bottom: 4%;
+  color: white;
+}
+
+.user_admin #line{
+  border-right: 2px solid white;
+}
+
+.user_admin a{
+  color: white;
+  text-decoration: none;
+}
+
+/* .user_admin # */
+
 .login__form {
   position: relative;
   margin-inline: 1.5rem;

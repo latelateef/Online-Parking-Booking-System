@@ -18,8 +18,14 @@
          <img src="assets/img/bg.jpg" alt="image" class="login__bg">
 
          <form action="" class="login__form">
+            <div class="user_admin">
+               <a id="user" href="#" onclick="changeColorAndRedirect('user')">User</a>
+               <a id="line"></a>
+               <a id="admin" href="#" onclick="changeColorAndRedirect('admin')">Admin</a>
+            </div>
+            
             <h1 class="login__title">Login</h1>
-
+            
             <div class="login__inputs">
                <div class="login__box">
                   <input type="email" placeholder="Email ID" required class="login__input">
@@ -40,8 +46,9 @@
 
                <a href="#" class="login__forgot">Forgot Password?</a>
             </div>
-            <button type="submit" class="login__button">Login</button>
-            <div class="text-center text-white"><a href="/home_page/index.html" class="text-white">Back to home</a></div>
+            <button type="submit" class="login__button" data-redirect="" onclick="redirect()" href="/user/dashboard/index.html">Login</button>
+
+            <div class="text-center text-white">Back to <a href="/home_page/index.html" class="text-white">Home</a></div>
 
             <div class="login__register">
                Don't have an account? <a href="/signup_page/index.html">Register</a>
@@ -49,4 +56,34 @@
          </form>
       </div>
    </body>
+   <script>
+      function changeColorAndRedirect(role) {
+         // Change the color of the clicked element to red
+         document.getElementById(role).style.color = "chartreuse";
+         //document.getElementById(role).style.opacity = 1;
+         
+         // Change the color of the previously clicked element back to its default color
+         var previousRole = (role === 'user') ? 'admin' : 'user';
+         document.getElementById(previousRole).style.color = "";
+ 
+         // Update login button functionality based on the clicked role
+         if (role === 'user') {
+             // If user is clicked, set login button to redirect to user landing page
+             document.getElementById('loginButton').setAttribute('data-redirect', 'user');
+         } else if (role === 'admin') {
+             // If admin is clicked, set login button to redirect to admin page
+             document.getElementById('loginButton').setAttribute('data-redirect', 'admin');
+         }
+      }
+
+   function redirect() {
+      // Redirect based on the data-redirect attribute set by changeColorAndRedirect()
+      var redirectTarget = document.getElementById('loginButton').getAttribute('data-redirect');
+      if (redirectTarget === 'user') {
+          window.location.href = '/user/dashboard/index.html';
+      } else if (redirectTarget === 'admin') {
+          window.location.href = '/user/dashboard/index.html';
+      }
+   }
+   </script>
 </html>
