@@ -46,7 +46,7 @@
 
                <a href="#" class="login__forgot">Forgot Password?</a>
             </div>
-            <button type="submit" class="login__button" data-redirect="" onclick="redirect()" href="/user/dashboard/index.html">Login</button>
+            <button type="submit" class="login__button" id="loginButton" data-redirect="user" onclick="redirect()" href="/user/dashboard/index.html">Login</button>
 
             <div class="text-center text-white">Back to <a href="/home_page/index.html" class="text-white">Home</a></div>
 
@@ -58,20 +58,19 @@
    </body>
    <script>
       function changeColorAndRedirect(role) {
-         // Change the color of the clicked element to red
+         // Change the color of the clicked element
          document.getElementById(role).style.color = "chartreuse";
-         //document.getElementById(role).style.opacity = 1;
+         document.getElementById(role).style.textDecoration = "underline";
          
          // Change the color of the previously clicked element back to its default color
          var previousRole = (role === 'user') ? 'admin' : 'user';
          document.getElementById(previousRole).style.color = "";
+         document.getElementById(previousRole).style.textDecoration = "none";
  
          // Update login button functionality based on the clicked role
          if (role === 'user') {
-             // If user is clicked, set login button to redirect to user landing page
              document.getElementById('loginButton').setAttribute('data-redirect', 'user');
          } else if (role === 'admin') {
-             // If admin is clicked, set login button to redirect to admin page
              document.getElementById('loginButton').setAttribute('data-redirect', 'admin');
          }
       }
@@ -80,9 +79,11 @@
       // Redirect based on the data-redirect attribute set by changeColorAndRedirect()
       var redirectTarget = document.getElementById('loginButton').getAttribute('data-redirect');
       if (redirectTarget === 'user') {
-          window.location.href = '/user/dashboard/index.html';
+         //document.getElementById('loginButton').setAttribute('href', '/user/dashboard/index.html');
+         window.location.href = '/user/dashboard/index.html';
       } else if (redirectTarget === 'admin') {
-          window.location.href = '/user/dashboard/index.html';
+         window.location.href = '/admin/dashboard/index.html';
+         //document.getElementById('loginButton').setAttribute('href', '/admin/dashboard/index.html');
       }
    }
    </script>
