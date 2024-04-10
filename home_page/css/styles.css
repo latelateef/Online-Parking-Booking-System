@@ -635,6 +635,7 @@ footer label {
   background: #282834;
   color: #b6b7b9;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
 }
 
 /*--------footer---------*/
